@@ -89,9 +89,23 @@ body {
                 Train Status
             </h2>
             <div class="panel">
-                <form>
-                    <label> Starting Station </label> <select> </select>
-                    <label> Ending Station </label> <select> </select>
+                <form method="POST">  {% csrf_token %}
+                    <label> Starting Station </label>
+                    <select>
+                        {% for station in stations %}
+                            <option value="{{ station.id }}">
+                                {{ station.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <label> Ending Station </label>
+                    <select>
+                        {% for station in stations %}
+                            <option value="{{ station.id }}">
+                                {{ station.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
                     <button> Go! </button>
                 </form>
             </div>
@@ -107,6 +121,35 @@ body {
             <b>Hint:</b> SEPTA's API <a href="http://www3.septa.org/">documentation</a> might help you if you get stuck or want to know
             more about the structure of the data.  
             </b>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Train</th>
+                        <th>Line</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Status</th>
+                    </tr>
+
+                    {% for train in trains %}
+                        <tr>
+                            <td>{{ train.orig_train }}</td>
+                            <td>{{ train.orig_line }}</td>
+                            <td>{{ train.orig_departure_time }}</td>
+                            <td>{{ train.orig_arrival_time }}</td>
+                            <td>{{ train.orig_delay }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5">
+                                Sorry, no upcoming trains between the stations
+                                selected.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </body>
 </html>
