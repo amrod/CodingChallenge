@@ -9,7 +9,7 @@ class SEPTAServices(object):
         start_station = self.replace_amp(start_station)
         end_station = self.replace_amp(end_station)
 
-        params = {'req1': start_station, 'req21': end_station}
+        params = {'req1': start_station, 'req2': end_station}
         print params
         r = requests.get(SEPTA_NEXTTOARRIVE_URL, params=params)
 
