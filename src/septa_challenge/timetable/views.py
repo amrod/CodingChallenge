@@ -15,8 +15,8 @@ def home(request):
 
         trains = services.get_next_to_arrive(start, end)
         context['trains'] = trains
-        context['selected_start'] = start
-        context['selected_end'] = end
+        selected = {'start': start, 'end': end}
+        context['selected'] = selected
 
     return render(request, 'main.html', context)
 

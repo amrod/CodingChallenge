@@ -93,7 +93,7 @@ body {
                     <label> Starting Station </label>
                     <select name="start_station">
                         {% for station in stations %}
-                            <option value="{{ station.name }}" {% if selected_start == station.name %} selected {% endif %}>
+                            <option value="{{ station.name }}" {% if selected.start == station.name %} selected {% endif %}>
                                 {{ station.name }}
                             </option>
                         {% endfor %}
@@ -101,7 +101,7 @@ body {
                     <label> Ending Station </label>
                     <select name="end_station">
                         {% for station in stations %}
-                            <option value="{{ station.name }}" {% if selected_end == station.name %} selected {% endif %}>
+                            <option value="{{ station.name }}" {% if selected.end == station.name %} selected {% endif %}>
                                 {{ station.name }}
                             </option>
                         {% endfor %}
