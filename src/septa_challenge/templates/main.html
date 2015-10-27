@@ -91,17 +91,17 @@ body {
             <div class="panel">
                 <form method="POST">  {% csrf_token %}
                     <label> Starting Station </label>
-                    <select>
+                    <select name="start_station">
                         {% for station in stations %}
-                            <option value="{{ station.id }}">
+                            <option value="{{ station.name }}">
                                 {{ station.name }}
                             </option>
                         {% endfor %}
                     </select>
                     <label> Ending Station </label>
-                    <select>
+                    <select name="end_station">
                         {% for station in stations %}
-                            <option value="{{ station.id }}">
+                            <option value="{{ station.name }}">
                                 {{ station.name }}
                             </option>
                         {% endfor %}

@@ -9,9 +9,13 @@ def home(request):
 
     context = {'stations': stations}
 
+    if request.method == 'POST':
+        start = request.POST.get('start_station')
+        end = request.POST.get('end_station')
+        ss = services.SEPTAServices()
+
+        trains = ss.get_next_to_arrive(start, end)
+        context['trains'] = trains
+
     return render(request, 'main.html', context)
-
-
-
-
 
