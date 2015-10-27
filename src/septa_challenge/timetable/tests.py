@@ -5,7 +5,6 @@ import services
 class SEPTAServicesTestCases(TestCase):
 
     def setUp(self):
-        self.ss = services.SEPTAServices()
         self.a = 'Swarthmore'
         self.b = '30th Street Station'
 
@@ -15,7 +14,7 @@ class SEPTAServicesTestCases(TestCase):
         parameters.
         """
 
-        r = self.ss.get_next_to_arrive(self.a, self.b)
+        r = services.get_next_to_arrive(self.a, self.b)
         params = {'req1': self.a, 'req2': self.b}
 
         self.assertTrue(
@@ -27,7 +26,7 @@ class SEPTAServicesTestCases(TestCase):
         """Verify ampersand is handled correctly.
         """
 
-        r = self.ss.get_next_to_arrive(self.a, 'Airport Terminals E & F')
+        r = services.get_next_to_arrive(self.a, 'Airport Terminals E & F')
         params = {'req1': self.a, 'req2': 'Airport Terminals E-F'}
 
         self.assertTrue(
